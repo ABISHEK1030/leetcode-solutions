@@ -22,7 +22,7 @@ class Solution {
             int fruit = entry.getKey();
             int count = entry.getValue();
 
-            if (count % 2 != 0) return -1;
+            if (count % 2 != 0) return -1; 
 
             int half = Math.abs(count) / 2;
             if (count > 0) {
@@ -32,7 +32,6 @@ class Solution {
             }
         }
 
-       
         Collections.sort(fromB1);
         Collections.sort(fromB2, Collections.reverseOrder());
 
