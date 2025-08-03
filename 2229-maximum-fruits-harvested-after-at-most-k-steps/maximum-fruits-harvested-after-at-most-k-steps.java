@@ -1,21 +1,24 @@
 class Solution {
     public int maxTotalFruits(int[][] fruits, int startPos, int k) {
-        int ans = 0, sum = 0;
-        int i = 0;
-        for (int j = 0; j < fruits.length; ++j) {
-            int pj = fruits[j][0];
-            int fj = fruits[j][1];
-            sum += fj;
-           
-            while (i <= j && 
-                   pj - fruits[i][0] 
-                   + Math.min(Math.abs(startPos - fruits[i][0]), Math.abs(startPos - pj)) 
-                   > k) {
-                sum -= fruits[i][1];
-                i++;
+        int n = fruits.length;
+        int maxFruits = 0;
+        int left = 0, sum = 0;
+
+        for (int right = 0; right < n; right++) {
+            sum += fruits[right][1];
+            
+            while (left <= right && !isValid(fruits[left][0], fruits[right][0], startPos, k)) {
+                sum -= fruits[left][1];
+                left++;
             }
-            ans = Math.max(ans, sum);
+            maxFruits = Math.max(maxFruits, sum);
         }
-        return ans; 
+        return maxFruits;
+    }
+
+    private boolean isValid(int leftPos, int rightPos, int startPos, int k) {
+        int option1 = Math.abs(startPos - leftPos) + (rightPos - leftPos);
+        int option2 = Math.abs(startPos - rightPos) + (rightPos - leftPos);
+        return Math.min(option1, option2) <= k;
     }
 }
