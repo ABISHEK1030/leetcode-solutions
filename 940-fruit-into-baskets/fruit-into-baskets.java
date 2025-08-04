@@ -1,6 +1,6 @@
 class Solution {
     public int totalFruit(int[] fruits) {
-   int n = fruits.length;
+     int n = fruits.length;
         int left = 0;
         int maxLen = 0;
         
@@ -20,6 +20,6 @@ class Solution {
             maxLen = Math.max(maxLen, right - left + 1);
         }
         
-        return maxLen;     
+        return maxLen;   
     }
 }
