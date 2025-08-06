@@ -1,12 +1,11 @@
 class Solution {
     public int numOfUnplacedFruits(int[] fruits, int[] baskets) {
-     int n = baskets.length;
+        int n = baskets.length;
         SegmentTree st = new SegmentTree(baskets);
         int unplaced = 0;
-
-        for (int fruit : fruits) {
-            int pos = st.query(1, 1, n, fruit);
-            if (pos == -1) {
+        for (int f : fruits) {
+            int pos = st.query(1, 1, n, f);
+            if (pos < 0) {
                 unplaced++;
             } else {
                 st.modify(1, 1, n, pos, 0);
@@ -15,45 +14,44 @@ class Solution {
         return unplaced;
     }
 
-  
-    static class SegmentTree {
-        int[] tree;
+   
+    class SegmentTree {
+        int[] tr;
         int n;
-
-        SegmentTree(int[] nums) {
-            n = nums.length;
-            tree = new int[n * 4];
-            build(1, 1, n, nums);
+        public SegmentTree(int[] arr) {
+            n = arr.length;
+            tr = new int[n * 4];
+            build(arr, 1, 1, n);
         }
-
-        void build(int idx, int l, int r, int[] nums) {
+        private void build(int[] a, int u, int l, int r) {
             if (l == r) {
-                tree[idx] = nums[l - 1];
-                return;
+                tr[u] = a[l - 1];
+            } else {
+                int m = (l + r) >> 1;
+                build(a, u << 1, l, m);
+                build(a, u << 1 | 1, m + 1, r);
+                tr[u] = Math.max(tr[u << 1], tr[u << 1 | 1]);
             }
-            int mid = (l + r) >> 1;
-            build(idx << 1, l, mid, nums);
-            build(idx << 1 | 1, mid + 1, r, nums);
-            tree[idx] = Math.max(tree[idx << 1], tree[idx << 1 | 1]);
         }
-
-        void modify(int idx, int l, int r, int pos, int val) {
-            if (l == r) {
-                tree[idx] = val;
-                return;
-            }
-            int mid = (l + r) >> 1;
-            if (pos <= mid) modify(idx << 1, l, mid, pos, val);
-            else modify(idx << 1 | 1, mid + 1, r, pos, val);
-            tree[idx] = Math.max(tree[idx << 1], tree[idx << 1 | 1]);
-        }
-
-        int query(int idx, int l, int r, int val) {
-            if (tree[idx] < val) return -1;
+        public int query(int u, int l, int r, int v) {
+            if (tr[u] < v) return -1;
             if (l == r) return l;
-            int mid = (l + r) >> 1;
-            if (tree[idx << 1] >= val) return query(idx << 1, l, mid, val);
-            else return query(idx << 1 | 1, mid + 1, r, val);
-        }   
+            int m = (l + r) >> 1;
+            if (tr[u << 1] >= v) {
+                return query(u << 1, l, m, v);
+            } else {
+                return query(u << 1 | 1, m + 1, r, v);
+            }
+        }
+        public void modify(int u, int l, int r, int idx, int val) {
+            if (l == r) {
+                tr[u] = val;
+            } else {
+                int m = (l + r) >> 1;
+                if (idx <= m) modify(u << 1, l, m, idx, val);
+                else modify(u << 1 | 1, m + 1, r, idx, val);
+                tr[u] = Math.max(tr[u << 1], tr[u << 1 | 1]);
+            }
+        }
     }
 }
