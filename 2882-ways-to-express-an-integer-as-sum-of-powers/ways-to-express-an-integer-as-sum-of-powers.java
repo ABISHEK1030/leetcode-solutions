@@ -1,7 +1,6 @@
 class Solution {
     public int numberOfWays(int n, int x) {
-        final long MOD = 1_000_000_007L;
-
+       final long MOD = 1_000_000_007L;
         List<Integer> powers = new ArrayList<>();
         for (int a = 1;; ++a) {
             long p = 1;
@@ -16,7 +15,7 @@ class Solution {
         int[] dp = new int[n + 1];
         dp[0] = 1;
 
-       
+      
         for (int p : powers) {
             for (int i = n; i >= p; --i) {
                 dp[i] = (int)((dp[i] + (long)dp[i - p]) % MOD);
@@ -24,5 +23,6 @@ class Solution {
         }
 
         return dp[n];
+ 
     }
 }
