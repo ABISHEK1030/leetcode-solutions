@@ -8,6 +8,7 @@ class Solution {
             for (int l : lang) set.add(l);
             langList.add(set);
         }
+
         Set<Integer> needTeach = new HashSet<>();
         for (int[] f : friendships) {
             int u = f[0] - 1, v = f[1] - 1;
@@ -19,7 +20,6 @@ class Solution {
 
         if (needTeach.isEmpty()) return 0;
 
-       
         int[] count = new int[n + 1];
         for (int person : needTeach) {
             for (int l : langList.get(person)) {
@@ -27,7 +27,6 @@ class Solution {
             }
         }
 
-       
         int max = 0;
         for (int i = 1; i <= n; i++) {
             max = Math.max(max, count[i]);
