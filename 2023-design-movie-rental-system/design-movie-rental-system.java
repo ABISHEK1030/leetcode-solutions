@@ -3,9 +3,9 @@ import java.util.*;
 class MovieRentingSystem {
 
     private final Map<Integer, TreeSet<int[]>> movieToShops;
- 
-    private final TreeSet<int[]> rented;
   
+    private final TreeSet<int[]> rented;
+    
     private final Map<String, Integer> priceMap;
 
     public MovieRentingSystem(int n, int[][] entries) {
@@ -25,7 +25,6 @@ class MovieRentingSystem {
         }
     }
 
-  
     public List<Integer> search(int movie) {
         List<Integer> res = new ArrayList<>();
         if (!movieToShops.containsKey(movie)) return res;
@@ -36,14 +35,12 @@ class MovieRentingSystem {
         return res;
     }
 
-   
     public void rent(int shop, int movie) {
         int price = priceMap.get(shop + "_" + movie);
         movieToShops.get(movie).remove(new int[]{price, shop});
         rented.add(new int[]{price, shop, movie});
     }
 
-  
     public void drop(int shop, int movie) {
         int price = priceMap.get(shop + "_" + movie);
         rented.remove(new int[]{price, shop, movie});
