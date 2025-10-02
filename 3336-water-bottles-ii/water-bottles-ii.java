@@ -4,7 +4,7 @@ class Solution {
         int empty = 0;
 
         while (numBottles > 0) {
-          
+            
             ans += numBottles;
             empty += numBottles;
             numBottles = 0;
@@ -13,7 +13,7 @@ class Solution {
             if (empty >= numExchange) {
                 empty -= numExchange;
                 numBottles = 1;
-                numExchange++;
+                numExchange++; 
             }
         }
         return ans;
