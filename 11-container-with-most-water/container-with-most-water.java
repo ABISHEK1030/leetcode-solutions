@@ -1,6 +1,6 @@
 class Solution {
     public int maxArea(int[] height) {
-    int left = 0, right = height.length - 1;
+      int left = 0, right = height.length - 1;
         int maxArea = 0;
 
         while (left < right) {
@@ -15,6 +15,6 @@ class Solution {
             }
         }
 
-        return maxArea;    
+        return maxArea;   
     }
 }
