@@ -1,6 +1,6 @@
 class Solution {
     public int[] avoidFlood(int[] rains) {
-      int n = rains.length;
+    int n = rains.length;
         int[] res = new int[n];
         Map<Integer, Integer> fullLakes = new HashMap<>();
         TreeSet<Integer> dryDays = new TreeSet<>();
@@ -21,6 +21,6 @@ class Solution {
                 fullLakes.put(lake, i);
             }
         }
-        return res;   
+        return res;    
     }
 }
