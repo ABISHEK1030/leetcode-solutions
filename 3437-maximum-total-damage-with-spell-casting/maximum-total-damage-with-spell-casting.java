@@ -1,6 +1,6 @@
 class Solution {
     public long maximumTotalDamage(int[] power) {
-        Map<Integer, Long> map = new HashMap<>();
+     Map<Integer, Long> map = new HashMap<>();
         for (int p : power) {
             map.put(p, map.getOrDefault(p, 0L) + p);
         }
@@ -24,6 +24,6 @@ class Solution {
             dp[i] = Math.max(take, skip);
         }
 
-        return dp[n - 1];
+        return dp[n - 1];   
     }
 }
