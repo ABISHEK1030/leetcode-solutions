@@ -1,6 +1,6 @@
 class Solution {
     public int maxIncreasingSubarrays(List<Integer> nums) {
-     int n = nums.size();
+           int n = nums.size();
         int ans = 0;
         int increasing = 1;       
         int prevIncreasing = 0;    
@@ -9,7 +9,7 @@ class Solution {
             if (nums.get(i) > nums.get(i - 1)) {
                 increasing++;
             } else {
-             
+                
                 prevIncreasing = increasing;
                 increasing = 1;
             }
@@ -18,6 +18,6 @@ class Solution {
             ans = Math.max(ans, Math.min(prevIncreasing, increasing));
         }
 
-        return ans;   
+        return ans;
     }
 }
