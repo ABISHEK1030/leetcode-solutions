@@ -14,7 +14,7 @@ class Solution {
         int ch = s.charAt(i) - 'a';
         int res = 0;
 
-        // no change
+     
         int newMask = mask | (1 << ch);
         if (Integer.bitCount(newMask) > k) {
             res = Math.max(res, 1 + dfs(s, i + 1, 1 << ch, changed, k, memo));
@@ -22,7 +22,7 @@ class Solution {
             res = Math.max(res, dfs(s, i + 1, newMask, changed, k, memo));
         }
 
-        // one change allowed
+      
         if (changed == 0) {
             for (int c = 0; c < 26; c++) {
                 if (c == ch) continue;
@@ -38,5 +38,4 @@ class Solution {
         memo.put(key, res);
         return res;
     }
-
-    }
+}
