@@ -1,6 +1,6 @@
 class Solution {
     public int maxFrequency(int[] nums, int k, int numOperations) {
-      Map<Integer, Integer> cnt = new HashMap<>();
+     Map<Integer, Integer> cnt = new HashMap<>();
         TreeMap<Integer, Integer> diff = new TreeMap<>();
         
         for (int v : nums) {
@@ -24,6 +24,6 @@ class Solution {
             answer = Math.max(answer, possible);
         }
         
-        return answer;
+        return answer;   
     }
 }
