@@ -1,6 +1,6 @@
 class Solution {
     public int maxFrequency(int[] nums, int k, int numOperations) {
-       int ans = 1;
+      int ans = 1;
         int adjustable = 0;
         Map<Integer, Integer> count = new HashMap<>();
         TreeMap<Integer, Integer> line = new TreeMap<>();
