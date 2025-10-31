@@ -1,6 +1,6 @@
 class Solution {
     public int[] getSneakyNumbers(int[] nums) {
-         final int kMax = 100;  
+       final int kMax = 100; 
         int[] ans = new int[2];
         int[] count = new int[kMax + 1];
         int idx = 0;
@@ -14,6 +14,6 @@ class Solution {
                 }
             }
         }
-        return ans;  
+        return ans;   
     }
 }
