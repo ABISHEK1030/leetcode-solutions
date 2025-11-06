@@ -11,6 +11,7 @@ class Solution {
             parent[i] = i;
             size[i] = 1;
         }
+
         for (int[] conn : connections) {
             union(conn[0], conn[1]);
         }
@@ -28,7 +29,7 @@ class Solution {
 
         for (int[] q : queries) {
             int type = q[0], x = q[1];
-            if (type == 2) {
+            if (type == 2) { 
                 if (online[x]) {
                     online[x] = false;
                     int root = find(x);
