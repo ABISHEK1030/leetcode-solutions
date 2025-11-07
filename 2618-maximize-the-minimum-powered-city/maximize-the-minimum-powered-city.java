@@ -1,6 +1,6 @@
 class Solution {
     public long maxPower(int[] stations, int r, int k) {
-     int n = stations.length;
+      int n = stations.length;
         long[] prefix = new long[n+1];
         for (int i = 0; i < n; i++) prefix[i+1] = prefix[i] + stations[i];
 
