@@ -1,6 +1,6 @@
 class Solution {
     public int minimumOneBitOperations(int n) {
-         return helper(n);
+       return helper(n);
     }
 
     private int helper(int n) {
