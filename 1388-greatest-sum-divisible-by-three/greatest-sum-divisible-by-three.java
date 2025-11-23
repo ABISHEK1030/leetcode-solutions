@@ -2,7 +2,7 @@ class Solution {
     public int maxSumDivThree(int[] nums) {
       int[] dp = new int[3];
         dp[0] = 0;
-        dp[1] = dp[2] = Integer.MIN_VALUE; 
+        dp[1] = dp[2] = Integer.MIN_VALUE;
 
         for (int num : nums) {
             int[] next = dp.clone();
@@ -16,6 +16,6 @@ class Solution {
             dp = next;
         }
 
-        return Math.max(0, dp[0]);   
+        return Math.max(0, dp[0]);  
     }
 }
