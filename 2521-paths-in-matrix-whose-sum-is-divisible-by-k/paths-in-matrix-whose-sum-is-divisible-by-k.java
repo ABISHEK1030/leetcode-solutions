@@ -4,7 +4,7 @@ class Solution {
     public int numberOfPaths(int[][] grid, int k) {
         int m = grid.length;
         int n = grid[0].length;
-        
+       
         int[][][] dp = new int[m][n][k];
 
         dp[0][0][grid[0][0] % k] = 1;
@@ -14,7 +14,6 @@ class Solution {
                 if (i == 0 && j == 0) continue;
                 int val = grid[i][j] % k;
 
-              
                 if (i > 0) {
                     for (int r = 0; r < k; ++r) {
                         int cnt = dp[i-1][j][r];
@@ -25,7 +24,6 @@ class Solution {
                     }
                 }
 
-                
                 if (j > 0) {
                     for (int r = 0; r < k; ++r) {
                         int cnt = dp[i][j-1][r];
